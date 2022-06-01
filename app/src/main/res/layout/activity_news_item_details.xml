@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    tools:context=".Activity.NewsItemDetailsActivity">
+
+    <ImageButton
+        android:id="@+id/back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="18dp"
+        android:background="#00FFFFFF"
+
+        android:src="@drawable/ic_baseline_arrow_back_24" />
+    <ImageView
+        android:id="@+id/iv_news_details_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:src="@mipmap/ic_launcher"
+        android:layout_below="@id/back_btn"
+        android:layout_marginTop="14dp"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:id="@+id/tv_news_details_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="28 June,2022"
+        android:layout_below="@id/iv_news_details_image"
+        android:layout_alignLeft="@id/iv_news_details_image"
+        android:fontFamily="@font/poppins"
+        android:textSize="12sp"
+        android:layout_marginTop="10dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_news_details_author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="By Minister of ICT"
+            android:layout_below="@id/iv_news_details_image"
+            android:layout_alignTop="@id/tv_news_details_date"
+            android:layout_alignRight="@id/iv_news_details_image"
+            android:fontFamily="@font/poppins"
+            android:textSize="12sp"/>
+
+    <ImageView
+        android:id="@+id/tv_vertical_divider"
+        android:layout_width="5dp"
+        android:layout_height="50dp"
+        android:layout_alignLeft="@id/iv_news_details_image"
+        android:background="@drawable/news_vertical_line"
+        android:layout_marginTop="14dp"
+        android:layout_below="@id/tv_news_details_date"/>
+
+    <TextView
+        android:id="@+id/tv_news_details_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@id/tv_vertical_divider"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/tv_vertical_divider"
+        android:fontFamily="@font/poppins_semibold"
+        android:layout_alignRight="@id/iv_news_details_image"
+        android:text="The Presidents visit to IUIU for the 34th Graduation on 23rd May, 2022"
+        android:textSize="16sp" />
+
+
+    <TextView
+        android:id="@+id/tv_news_details_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc, in id diam pulvinar enim, proin sit sit. Suspendisse velit venenatis, faucibus integer imperdiet amet, nullam. Blandit viverra varius sed aenean sollicitudin pretium sit. Et sed pharetra magna et est et adipiscing at. Interdum sit morbi turpis est leo tincidunt interdum duis a. Nam laoreet tincidunt dignissim sapien in sollicitudin eu habitasse. Nibh est sed ullamcorper nunc est sed. Eget."
+        android:fontFamily="@font/poppins"
+        android:layout_alignLeft="@id/tv_vertical_divider"
+        android:layout_below="@id/tv_vertical_divider"
+        android:layout_marginTop="10dp"
+        android:justificationMode="inter_word"
+        android:layout_alignRight="@id/iv_news_details_image"/>
+
+
+
+
+</RelativeLayout>

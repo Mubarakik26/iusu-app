@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">iusu_app_v3</string>
+
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+    <string-array name="campus">
+        <item>Main Campus</item>
+        <item>Kampala Campus</item>
+        <item>Females Campus</item>
+        <item>Arua Campus</item>
+    </string-array>
+
+    <string-array name="faculty">
+        <item>Science</item>
+        <item>Law</item>
+        <item>Education</item>
+        <item>Arabic and Islamic Studies</item>
+        <item>Mass Communication</item>
+        <item>Nursing</item>
+        <item>Management</item>
+    </string-array>
+
+
+    <string name="ann_content">Effective and efficient communication between leaders and their subordinates in any organization or government be it national, local, or school-based is key to maintaining a conducive environment between the two parties. This kind of communication reduces issues of mistrust and doubt in the leading government or group since the subordinates are always informed on the different progressions made, challenges faced, and reasons behind the different decisions made on some matters that concern the subordinates.
+The Islamic University Students’ Union (IUSU) government is a student body at the Islamic University In Uganda (IUIU) that is responsible for getting student concerns and complaints and addressing them to the Administrative body of IUIU for a solution to be discussed. IUSU is led by a Guild President who works with Ministers who are responsible for different issues that concern students for example ICT, Health, Sport and Entertainment to mention but a few.
+Students with complaints and concerns submit them by approaching the IUSU government offices where they seek the audience of the Guild President or Minister responsible for the field in which the problem lies. On the other hand, the IUSU government officials use notice boards, and social media platforms especially WhatsApp to pass communications to the student body at large. Another thing to mention is that most students can </string>
+
+
+    <string name="ann_content2">The mode of communication used to pass information between leaders and their subordinates or subjects should be timely, give provision for feedback, complete and other qualities that effective communication should have as discussed by iEduNote (2019). As seen in the background, IUSU mainly uses two modes of communication that is WhatsApp and noticeboards but they do not fully satisfy the needs of students and the IUSU government leaders. On the other hand, when students want to make complaints to the government, they have to approach the different offices of the government in order to be worked upon. Keeping the fact that the greatest number of Ministers do not have offices constant, the IUSU government consists of students who are not always in these offices since they also have other duties they have to attend to as students, thus the students need an alternative where they can make complaints from anywhere without necessarily approaching the offices.
+If the available system is not improved, there will always be issues of transparency as leaders do not communicate to students as often as necessary, students will only get to identify who</string>
+</resources>

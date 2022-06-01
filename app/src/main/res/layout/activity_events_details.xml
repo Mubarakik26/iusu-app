@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginLeft="16dp"
+    android:layout_marginRight="16dp"
+    tools:context=".Activity.EventsDetailsActivity">
+
+
+    <ImageButton
+        android:id="@+id/event_back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:background="#00FFFFFF"
+        android:src="@drawable/ic_baseline_arrow_back_24" />
+
+    <ImageView
+        android:id="@+id/iv_event_details_image"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/event_back_btn"
+        android:layout_marginTop="14dp"
+        android:scaleType="centerCrop"
+
+        android:src="@drawable/im_5" />
+
+    <TextView
+        android:id="@+id/tv_event_details_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/iv_event_details_image"
+        android:layout_alignRight="@id/iv_event_details_image"
+        android:layout_below="@id/iv_event_details_image"
+        android:layout_marginTop="30dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Legal Aid Clinic"
+        android:textSize="18sp"/>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/event_divider_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/tv_event_details_title"
+        android:layout_alignLeft="@id/tv_event_details_title"
+        android:layout_below="@id/tv_event_details_title"
+        android:layout_marginTop="10dp"/>
+
+
+    <ImageView
+        android:id="@+id/iv_event_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_baseline_date_24"
+        android:layout_below="@id/event_divider_1"
+        android:layout_alignLeft="@id/tv_event_details_title"/>
+
+
+     <ImageView
+        android:id="@+id/iv_event_details_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_baseline_location_on_24"
+        android:layout_below="@id/tv_event_details_time"
+        android:layout_marginTop="20dp"
+        android:layout_alignLeft="@id/tv_event_details_title"
+         />
+
+
+    <TextView
+        android:id="@+id/tv_event_details_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10 October,2022"
+        android:layout_toRightOf="@id/iv_event_date"
+        android:layout_alignBottom="@id/iv_event_date"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="14sp"
+        android:layout_marginLeft="10dp"/>
+
+
+
+    <TextView
+        android:id="@+id/tv_event_details_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="10:00-14:00"
+        android:layout_toRightOf="@id/iv_event_date"
+        android:layout_below="@id/tv_event_details_date"
+        android:layout_alignLeft="@id/tv_event_details_date"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="14sp"/>
+
+
+    <TextView
+        android:id="@+id/tv_event_details_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Management Shade"
+        android:layout_toRightOf="@id/iv_event_date"
+        android:layout_alignBottom="@id/iv_event_details_location"
+        android:layout_alignLeft="@id/tv_event_details_date"
+        android:fontFamily="@font/poppins_semibold"
+        android:textSize="14sp"/>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:id="@+id/event_divider_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@id/tv_event_details_title"
+        android:layout_alignLeft="@id/tv_event_details_title"
+        android:layout_below="@id/iv_event_details_location"
+        android:layout_marginTop="10dp"/>
+
+
+    <TextView
+        android:id="@+id/tv_event_details_description_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/event_divider_2"
+        android:layout_alignLeft="@id/tv_event_details_title"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/iv_event_date"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="Description"
+        android:textSize="20sp" />
+
+
+
+    <TextView
+        android:id="@+id/tv_event_details_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_event_details_description_title"
+        android:layout_alignLeft="@id/tv_event_details_title"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@id/iv_event_date"
+        android:fontFamily="@font/poppins"
+        android:text="Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+nihil, eveniet aliquid culpa officia aut!"
+        android:justificationMode="inter_word"
+        android:textSize="14sp" />
+
+    <Button
+        android:id="@+id/btn_event_details_willBeThere"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_semibold"
+        android:text="I will be there"
+        android:background="@drawable/sign_up_in_button_bg"
+        android:textColor="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="20dp"
+        android:textSize="16sp"/>
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
