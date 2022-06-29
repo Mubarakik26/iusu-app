@@ -10,17 +10,17 @@ import android.view.MenuItem;
 import com.example.iusu_app_v3.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class FavoritesActivity extends AppCompatActivity {
+public class FavoriteEventsActivity extends AppCompatActivity {
 BottomNavigationView bottomNavigationView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_favorites);
+        setContentView(R.layout.activity_favorite_events);
 
         bottomNavigationMethod();
 
-
     }
+
 
     public void bottomNavigationMethod(){
         bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -32,19 +32,19 @@ BottomNavigationView bottomNavigationView;
 
 
                     case R.id.home:
-                        Intent intent = new Intent(FavoritesActivity.this,MainActivity.class);
+                        Intent intent = new Intent(FavoriteEventsActivity.this,MainActivity.class);
                         startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.help:
-                        Intent intent2 = new Intent(FavoritesActivity.this,HelpActivity.class);
+                        Intent intent2 = new Intent(FavoriteEventsActivity.this,HelpActivity.class);
                         startActivity(intent2);
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.profile:
-                        Intent intent1 = new Intent(FavoritesActivity.this,ProfileActivity.class);
+                        Intent intent1 = new Intent(FavoriteEventsActivity.this,ProfileActivity.class);
                         startActivity(intent1);
                         overridePendingTransition(0,0);
                         return true;

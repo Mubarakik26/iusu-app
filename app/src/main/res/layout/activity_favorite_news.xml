@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+
+    tools:context=".Activity.FavoriteNewsActivity">
+
+
+
+
+    <RelativeLayout
+        android:id="@+id/nav_btns"
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="20dp"
+
+        >
+        <Button
+            android:id="@+id/fav_news_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="News"
+            android:layout_marginLeft="5dp"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            />
+
+        <Button
+
+            android:id="@+id/fav_events_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:text="Events"
+            android:textAllCaps="false"
+            android:textSize="18sp"
+            android:layout_gravity="end"
+            android:backgroundTint="#00ffffff"
+            android:textColor="@color/purple_500"
+            android:layout_alignParentRight="true"
+            />
+
+    </RelativeLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nav_btns"
+        android:layout_marginTop="10dp"
+       >
+
+    </androidx.recyclerview.widget.RecyclerView>
+
+
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+
+        app:menu="@menu/bottom_navigation_menu" />
+
+</RelativeLayout>

@@ -23,8 +23,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/poppins_medium"
-            android:gravity="start"
-            android:textSize="30sp"
+            android:gravity="center_horizontal"
+            android:textSize="20sp"
+
             android:text="Welcome back."
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textColor="@color/black"/>
@@ -37,8 +38,9 @@
             android:gravity="start"
             android:textSize="30sp"
             android:text="Sign in"
+
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
-            android:textColor="@color/black"/>
+            android:textColor="@color/purple_500"/>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/edit_text_email_log_in"

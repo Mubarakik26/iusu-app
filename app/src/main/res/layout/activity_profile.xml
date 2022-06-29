@@ -5,24 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Activity.ProfileActivity"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp">
+    >
 
-
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+    android:layout_above="@id/bottom_navigation">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="10dp">
+
+        <TextView
+            android:id="@+id/profile_title_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Profile"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/poppins_semibold"/>
+
+
         <com.google.android.material.imageview.ShapeableImageView
            android:id="@+id/image"
             android:layout_width="100dp"
             android:layout_height="100dp"
-
+            android:layout_below="@id/profile_title_txt"
             android:layout_centerHorizontal="true"
             android:layout_margin="10dp"
             app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize50Percent"
@@ -34,9 +50,9 @@
             android:layout_height="wrap_content"
             android:src="@drawable/ic_baseline_camera_24"
            android:layout_alignRight="@id/image"
-            android:layout_alignTop="@id/image"
+            android:layout_alignBottom="@id/image"
             android:layout_marginRight="-1dp"
-            android:layout_marginTop="-1dp"
+            android:layout_marginBottom="-1dp"
             android:background="@drawable/camera_circle_bg"
             />
 
@@ -77,6 +93,7 @@
             />
 
     </RelativeLayout>
+
 
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
@@ -197,12 +214,44 @@
             </TableRow>
 
 
+            <TableRow>
+
+                <TextView
+                    android:id="@+id/titleTextViewGuildTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:padding="4dp"
+                    android:text="Guild Title"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/textViewGuildTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins"
+                    android:padding="4dp"
+                    android:text="Guild Title"
+                    android:textSize="18sp" />
+
+            </TableRow>
+
+
+
+
+
         </TableLayout>
 
-
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:text="log out"
+        android:layout_marginTop="20dp"/>
     </LinearLayout>
 
-
+</ScrollView>
 
 
 

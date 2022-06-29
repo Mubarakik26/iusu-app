@@ -8,17 +8,17 @@ public class Announcement {
     private String message;
     private String date;
     private String time;
-    private int go_id;
+    private String go_id;
     private String author;
 
-    public Announcement(int announcementId, String title, String message, String date, String time, int go_id, String author) {
+    public Announcement(int announcementId, String title, String message, String date, String time, String go_id) {
         this.announcementId = announcementId;
         this.title = title;
         this.message = message;
         this.date = date;
         this.time = time;
         this.go_id = go_id;
-        this.author = author;
+
     }
 
 
@@ -42,7 +42,7 @@ public class Announcement {
         return time;
     }
 
-    public int getGo_id() {
+    public String getGo_id() {
         return go_id;
     }
 

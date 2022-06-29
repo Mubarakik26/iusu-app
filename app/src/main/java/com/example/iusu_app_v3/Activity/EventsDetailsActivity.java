@@ -1,8 +1,11 @@
 package com.example.iusu_app_v3.Activity;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -21,7 +24,12 @@ public class EventsDetailsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_events_details);
 
-        getSupportActionBar().hide();
+        ActionBar actionBar = getSupportActionBar();
+
+        // showing the back button in action bar
+        actionBar.setDisplayHomeAsUpEnabled(true);
+
+
         eventDetailsImageIV=findViewById(R.id.iv_event_details_image);
         eventDetailsTitleTV=findViewById(R.id.tv_event_details_title);
         eventDetailsDescriptionTV=findViewById(R.id.tv_event_details_description);
@@ -43,5 +51,15 @@ public class EventsDetailsActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                this.finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

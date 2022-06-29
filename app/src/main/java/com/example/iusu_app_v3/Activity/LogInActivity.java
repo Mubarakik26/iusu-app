@@ -2,8 +2,10 @@ package com.example.iusu_app_v3.Activity;
 
 import android.content.Intent;
 
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -30,6 +32,7 @@ public class LogInActivity extends AppCompatActivity {
 
 
     TextInputLayout etEmail, etPassword;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,56 +86,53 @@ public class LogInActivity extends AppCompatActivity {
             etPassword.requestFocus();
             return;
         }
-
+        Toast.makeText(LogInActivity.this,"data collected",Toast.LENGTH_SHORT).show();
         //if everything is fine
         StringRequest stringRequest = new StringRequest(Request.Method.POST, URLs.URL_LOGIN,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
 
-
                         try {
+                            Log.i("tagconvertstr", "["+response+"]");
+
                             //converting response to json object
                             JSONObject obj = new JSONObject(response);
-
                             //if no error in response
                             if (!obj.getBoolean("error")) {
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-                                Toast.makeText(getApplicationContext(), "creating new user object", Toast.LENGTH_SHORT).show();
+
                                 //getting the user from the response
                                 JSONObject userJson = obj.getJSONObject("student");
 
-                                Toast.makeText(getApplicationContext(), "creating new user object", Toast.LENGTH_SHORT).show();
-
-                                //creating a new student object
-                                Student student = new Student(
-                                        userJson.getString("reg_no"),
-                                        userJson.getString("first_name"),
-                                        userJson.getString("last_name"),
-                                        userJson.getString("gender"),
-                                        userJson.getString("faculty"),
-                                        userJson.getString("campus"),
-                                        userJson.getString("phone"),
-                                        userJson.getString("email")
-                                );
-
-                                Toast.makeText(getApplicationContext(), "new user object created", Toast.LENGTH_SHORT).show();
 
 
-                                //storing the user in shared preferences
-                                SharedPreferenceManager.getInstance(getApplicationContext()).studentLogin(student);
-                                Toast.makeText(getApplicationContext(), "new user object stored and opening new activity", Toast.LENGTH_SHORT).show();
 
 
-                                finish();
+                                    //creating a new student object
+                                    Student student = new Student(
+                                            userJson.getString("reg_no"),
+                                            userJson.getString("first_name"),
+                                            userJson.getString("last_name"),
+                                            userJson.getString("gender"),
+                                            userJson.getString("faculty"),
+                                            userJson.getString("campus"),
+                                            userJson.getString("phone"),
+                                            userJson.getString("email"),
+                                            userJson.getString("academic_year"),
+                                            userJson.getString("title"),
+                                            userJson.getString("role"),
+                                            userJson.getString("go_id")
+                                    );
 
-                                Toast.makeText(getApplicationContext(), "still working", Toast.LENGTH_SHORT).show();
+
+
+                                //storing the student in shared preferences
+                              SharedPreferenceManager.getInstance(getApplicationContext()).studentLogin(student);
 
                                 //starting the profile activity
-                                startActivity(new Intent(getApplicationContext(), MainActivity.class));
-                                Toast.makeText(getApplicationContext(), "done", Toast.LENGTH_SHORT).show();
-
-
+                                finish();
+                                startActivity(new Intent(LogInActivity.this, MainActivity.class));
                             } else {
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                             }
@@ -145,15 +145,14 @@ public class LogInActivity extends AppCompatActivity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-
                     }
-                })
-        {
+                }) {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> params = new HashMap<>();
                 params.put("email", email);
                 params.put("password", password);
+
                 return params;
             }
         };

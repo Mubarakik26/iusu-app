@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
@@ -62,6 +63,23 @@ public class SignUpActivity extends AppCompatActivity {
         agreement=findViewById(R.id.agreement_checkbox);
 
         signUpButton=findViewById(R.id.sign_up);
+
+        findViewById(R.id.already_have_an_account_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+                startActivity(new Intent(getApplicationContext(), LogInActivity.class));
+            }
+        });
+
+        findViewById(R.id.ib_sign_up_back_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SignUpActivity.this.finish();
+
+
+            }
+        });
 
         agreement.setOnCheckedChangeListener(new CheckBox.OnCheckedChangeListener() {
             @Override
@@ -227,8 +245,10 @@ public class SignUpActivity extends AppCompatActivity {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-
+                        Log.i("tagconvertstr", "["+response+"]");
                         try {
+
+
                             //converting response to json object
                             JSONObject obj = new JSONObject(response);
                             //if no error in response
@@ -248,7 +268,11 @@ public class SignUpActivity extends AppCompatActivity {
                                         userJson.getString("faculty"),
                                         userJson.getString("campus"),
                                         userJson.getString("phone"),
-                                        userJson.getString("email")
+                                        userJson.getString("email"),
+                                        userJson.getString("academic_year"),
+                                        userJson.getString("title"),
+                                        userJson.getString("role"),
+                                        userJson.getString("go_id")
                                 );
 
                                 //storing the student in shared preferences

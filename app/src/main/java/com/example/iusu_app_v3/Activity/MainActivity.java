@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.iusu_app_v3.R;
+import com.example.iusu_app_v3.SharedPreferenceManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -23,38 +24,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().hide();
-        bottomNavigationMethod();
+        if(SharedPreferenceManager.getInstance(this).isLoggedIn()){
+            getSupportActionBar().hide();
+            bottomNavigationMethod();
 
-        announcementsBtn=findViewById(R.id.btnAnnouncements);
-        eventsBtn=findViewById(R.id.btnEvents);
-        newsBtn=findViewById(R.id.btnNews);
+            announcementsBtn=findViewById(R.id.btnAnnouncements);
+            eventsBtn=findViewById(R.id.btnEvents);
+            newsBtn=findViewById(R.id.btnNews);
 
-        announcementsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,AnnouncementActivity.class);
-                startActivity(intent);
-            }
-        });
+            announcementsBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,AnnouncementActivity.class);
+                    startActivity(intent);
+                }
+            });
 
-      eventsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,EventsActivity.class);
-                startActivity(intent);
-            }
-        });
+            eventsBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,EventsActivity.class);
+                    startActivity(intent);
+                }
+            });
 
-      newsBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainActivity.this,NewsActivity.class);
-                startActivity(intent);
-            }
-        });
+            newsBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,NewsActivity.class);
+                    startActivity(intent);
+                }
+            });
 
 
+
+        }
+        else{
+            Intent  intent = new Intent(MainActivity.this,LogInActivity.class);
+            startActivity(intent);
+            finish();
+        }
 
     }
 
@@ -69,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
 
 
                     case R.id.favorites:
-                        Intent intent = new Intent(MainActivity.this,FavoritesActivity.class);
+                        Intent intent = new Intent(MainActivity.this, FavoriteNewsActivity.class);
                         startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;

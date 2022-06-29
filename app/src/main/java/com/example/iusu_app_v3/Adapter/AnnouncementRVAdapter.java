@@ -15,8 +15,8 @@ import com.example.iusu_app_v3.R;
 import java.util.ArrayList;
 
 public class AnnouncementRVAdapter extends RecyclerView.Adapter<AnnouncementRVAdapter.ViewHolder> {
-   private ArrayList<Announcement> announcementArrayList;
-   private Context context;
+    private ArrayList<Announcement> announcementArrayList;
+    private Context context;
 
     public AnnouncementRVAdapter(ArrayList<Announcement> announcementArrayList, Context context) {
         this.announcementArrayList = announcementArrayList;
@@ -29,7 +29,7 @@ public class AnnouncementRVAdapter extends RecyclerView.Adapter<AnnouncementRVAd
     @Override
     public AnnouncementRVAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
 
-       View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.announcement_layout_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.announcement_layout_item,parent,false);
 
 
         return new ViewHolder(view);

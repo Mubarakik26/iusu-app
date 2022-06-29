@@ -3,44 +3,48 @@ package com.example.iusu_app_v3.Models;
 public class News {
 
     private int id;
+    private String image;
     private String title;
-    private String content;
-    private int image;
+    private String description;
     private String date;
-    private String author;
+    private String goId;
+    private String gpostTitle;
 
-
-    public News(int id, String title, String content, int image, String date, String author) {
+    public News(int id, String image, String title, String description, String date, String goId, String gpostTitle) {
         this.id = id;
-        this.title = title;
-        this.content = content;
         this.image = image;
+        this.title = title;
+        this.description = description;
         this.date = date;
-        this.author = author;
+        this.goId = goId;
+        this.gpostTitle = gpostTitle;
     }
-
 
     public int getId() {
         return id;
+    }
+
+    public String getImage() {
+        return image;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public String getContent() {
-        return content;
-    }
-
-    public int getImage() {
-        return image;
+    public String getDescription() {
+        return description;
     }
 
     public String getDate() {
         return date;
     }
 
-    public String getAuthor() {
-        return author;
+    public String getGoId() {
+        return goId;
+    }
+
+    public String getGpostTitle() {
+        return gpostTitle;
     }
 }

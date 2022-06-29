@@ -8,19 +8,29 @@
     android:padding="16dp"
     >
 
-    <TextView
-        android:id="@+id/tv_news"
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/news_fab_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_semibold"
-        android:textSize="20sp"
-        android:text="News"/>
+        android:src="@drawable/ic_baseline_add_24"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+
+<!--    <TextView-->
+<!--        android:id="@+id/tv_news"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/poppins_semibold"-->
+<!--        android:textSize="20sp"-->
+<!--        android:text="News"/>-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_news"
         android:layout_marginTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/tv_news"/>
+        android:layout_height="match_parent"
+
+        />
 
 </RelativeLayout>

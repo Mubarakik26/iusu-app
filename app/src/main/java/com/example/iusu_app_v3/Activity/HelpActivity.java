@@ -31,7 +31,7 @@ BottomNavigationView bottomNavigationView;
 
 
                     case R.id.favorites:
-                        Intent intent = new Intent(HelpActivity.this,FavoritesActivity.class);
+                        Intent intent = new Intent(HelpActivity.this,FavoriteNewsActivity.class);
                         startActivity(intent);
                         overridePendingTransition(0,0);
                         return true;

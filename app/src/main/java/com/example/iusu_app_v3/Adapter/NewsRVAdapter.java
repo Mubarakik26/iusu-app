@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.iusu_app_v3.Activity.NewsItemDetailsActivity;
 import com.example.iusu_app_v3.Models.News;
 import com.example.iusu_app_v3.R;
@@ -21,10 +23,12 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.ViewHolder
 
     ArrayList<News> newsArrayList;
     Context context;
+    RequestOptions option;
 
     public NewsRVAdapter(ArrayList<News> newsArrayList, Context context) {
         this.newsArrayList = newsArrayList;
         this.context = context;
+        option= new RequestOptions().centerCrop().placeholder(R.drawable.profile_avatar_placeholder_large).error(R.drawable.profile_avatar_placeholder_large);
     }
 
     @NonNull
@@ -38,10 +42,12 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         News news = newsArrayList.get(position);
-        holder.newsImg.setImageResource(news.getImage());
+//        holder.newsImg.setImageResource(news.getImage());
         holder.newsDateTV.setText(news.getDate());
         holder.newsTitleTV.setText(news.getTitle());
-        holder.newAuthorTV.setText(news.getAuthor());
+        holder.newAuthorTV.setText(news.getGpostTitle());
+
+        Glide.with(context).load(news.getImage()).apply(option).into(holder.newsImg);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,9 +57,9 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.ViewHolder
                 intent.putExtra("id",news.getId());
                 intent.putExtra("title",news.getTitle());
                 intent.putExtra("image",news.getImage());
-                intent.putExtra("content",news.getContent());
+                intent.putExtra("content",news.getDescription());
                 intent.putExtra("date",news.getDate());
-                intent.putExtra("author",news.getAuthor());
+                intent.putExtra("author",news.getGpostTitle());
 
                 context.startActivity(intent);
             }
@@ -68,7 +74,7 @@ public class NewsRVAdapter extends RecyclerView.Adapter<NewsRVAdapter.ViewHolder
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView newsImg;
-        TextView newsTitleTV,newsContentTV,newsDateTV,newAuthorTV;
+        TextView newsTitleTV,newsDateTV,newAuthorTV;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

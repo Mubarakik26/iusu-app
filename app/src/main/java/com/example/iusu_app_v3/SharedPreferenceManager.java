@@ -18,6 +18,13 @@ public class SharedPreferenceManager {
     private static final String KEY_CAMPUS = "keycampus";
     private static final String KEY_PHONE = "keyphone";
     private static final String KEY_EMAIL = "keyemail";
+    private static final String KEY_GO_ID = "keygoid";
+    private static final String KEY_ACADEMICYEAR = "keyacademicyear";
+    private static final String KEY_GUILD_TITLE = "keyguildtitle";
+    private static final String KEY_GUILD_ROLE = "keyguildrole";
+    private static final String IMAGE_URL = "IMAGE_URL";
+    private static final String KEY_URL = "IMAGE_URL.url";
+
 
     private static SharedPreferenceManager mInstance;
     private static Context ctx;
@@ -25,6 +32,7 @@ public class SharedPreferenceManager {
     private SharedPreferenceManager(Context context) {
         ctx = context;
     }
+
     public static synchronized SharedPreferenceManager getInstance(Context context) {
         if (mInstance == null) {
             mInstance = new SharedPreferenceManager(context);
@@ -44,6 +52,10 @@ public class SharedPreferenceManager {
         editor.putString(KEY_CAMPUS, student.getCampus());
         editor.putString(KEY_PHONE, student.getPhone());
         editor.putString(KEY_EMAIL, student.getEmail());
+        editor.putString(KEY_GO_ID, student.getGo_id());
+        editor.putString(KEY_GUILD_TITLE, student.getGuildTitle());
+        editor.putString(KEY_GUILD_ROLE, student.getGuildRole());
+        editor.putString(KEY_ACADEMICYEAR, student.getAcademicYear());
 
         editor.apply();
     }
@@ -65,7 +77,11 @@ public class SharedPreferenceManager {
                 sharedPreferences.getString(KEY_FACULTY, null),
                 sharedPreferences.getString(KEY_CAMPUS, null),
                 sharedPreferences.getString(KEY_PHONE, null),
-                sharedPreferences.getString(KEY_EMAIL, null)
+                sharedPreferences.getString(KEY_EMAIL, null),
+                sharedPreferences.getString(KEY_ACADEMICYEAR, null),
+                sharedPreferences.getString(KEY_GUILD_TITLE, null),
+                sharedPreferences.getString(KEY_GUILD_ROLE, null),
+                sharedPreferences.getString(KEY_GO_ID, null)
 
         );
     }
@@ -78,4 +94,16 @@ public class SharedPreferenceManager {
         editor.apply();
         ctx.startActivity(new Intent(ctx, LogInActivity.class));
     }
+
+    public String getProfileImageUrl() {
+        SharedPreferences preferences = ctx.getSharedPreferences(IMAGE_URL, Context.MODE_PRIVATE);
+        return preferences.getString(KEY_URL, "hello");
+    }
+
+    public void setProfileImageUrl(String url) {
+        SharedPreferences.Editor editor = ctx.getSharedPreferences(IMAGE_URL, Context.MODE_PRIVATE).edit();
+        editor.putString(KEY_URL, url);
+        editor.apply();
+    }
+
 }

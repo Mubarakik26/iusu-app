@@ -14,35 +14,61 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Iusu_app_v3">
         <activity
+            android:name=".Activity.CreateEventActivity"
+            android:exported="false"
+            android:label="Create Event" />
+        <activity
+            android:name=".Activity.CreateNewsActivity"
+            android:exported="false"
+            android:label="Create News" />
+        <activity
+            android:name=".Activity.CreateAnnouncementActivity"
+            android:exported="false"
+            android:label="Create Announcement" />
+        <activity
+            android:name=".Activity.FavoriteEventsActivity"
+            android:exported="false"
+            android:label="Favorites" />
+        <activity
             android:name=".Activity.EventsDetailsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Events" />
         <activity
             android:name=".Activity.NewsItemDetailsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="News" />
         <activity
             android:name=".Activity.NewsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="News" />
         <activity
             android:name=".Activity.EventsActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Events" />
         <activity
             android:name=".Activity.AnnouncementActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Announcement" />
         <activity
             android:name=".Activity.HelpActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Help" />
         <activity
-            android:name=".Activity.FavoritesActivity"
-            android:exported="false" />
+            android:name=".Activity.FavoriteNewsActivity"
+            android:exported="false"
+            android:label="Favorites" />
         <activity
             android:name=".Activity.ProfileActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Profile" />
         <activity
             android:name=".Activity.LogInActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Log in" />
         <activity
             android:name=".Activity.SignUpActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:label="Register" />
         <activity
             android:name=".Activity.MainActivity"
             android:exported="true">

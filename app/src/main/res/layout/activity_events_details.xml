@@ -9,19 +9,25 @@
     tools:context=".Activity.EventsDetailsActivity">
 
 
-    <ImageButton
-        android:id="@+id/event_back_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:background="#00FFFFFF"
-        android:src="@drawable/ic_baseline_arrow_back_24" />
+<!--    <ImageButton-->
+<!--        android:id="@+id/event_back_btn"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginTop="18dp"-->
+<!--        android:background="#00FFFFFF"-->
+<!--        android:src="@drawable/ic_baseline_arrow_back_24" />-->
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <ImageView
         android:id="@+id/iv_event_details_image"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_below="@id/event_back_btn"
+
         android:layout_marginTop="14dp"
         android:scaleType="centerCrop"
 
@@ -150,6 +156,9 @@ nihil, eveniet aliquid culpa officia aut!"
         android:justificationMode="inter_word"
         android:textSize="14sp" />
 
+</RelativeLayout>
+
+    </ScrollView>
     <Button
         android:id="@+id/btn_event_details_willBeThere"
         android:layout_width="match_parent"
