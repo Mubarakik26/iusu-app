@@ -5,32 +5,46 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import com.example.iusu_app_v3.R;
 import com.example.iusu_app_v3.SharedPreferenceManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
 
 
-    Button announcementsBtn, eventsBtn, newsBtn;
+
+    Button announcementsBtn, eventsBtn, newsBtn, guildBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         if(SharedPreferenceManager.getInstance(this).isLoggedIn()){
-            getSupportActionBar().hide();
+            //getSupportActionBar().hide();
             bottomNavigationMethod();
+
+
 
             announcementsBtn=findViewById(R.id.btnAnnouncements);
             eventsBtn=findViewById(R.id.btnEvents);
             newsBtn=findViewById(R.id.btnNews);
+            guildBtn=findViewById(R.id.btnGuild);
 
             announcementsBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -55,6 +69,19 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+
+
+            guildBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(MainActivity.this,GuildOfficialActivity.class);
+                    startActivity(intent);
+                }
+            });
+
+
+
+
 
 
 
@@ -101,6 +128,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+
+
+
 
 
 }

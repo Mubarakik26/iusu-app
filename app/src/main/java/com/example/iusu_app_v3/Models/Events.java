@@ -2,23 +2,29 @@ package com.example.iusu_app_v3.Models;
 
 public class Events {
 
-    private int image;
+    private int id;
+    private String image;
     private String title;
     private String description;
     private String date;
     private String time;
-    private String likes;
+    private String goId;
+    private String gpostTitle;
 
-    public Events(int image, String title, String description, String date, String time, String likes) {
+    public Events(int id,String image, String title, String description, String date, String time,String goId, String gpostTitle) {
+
+        this.id = id;
         this.image = image;
         this.title = title;
         this.description = description;
         this.date = date;
         this.time = time;
-        this.likes = likes;
+        this.goId = goId;
+        this.gpostTitle = gpostTitle;
+
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
@@ -38,7 +44,15 @@ public class Events {
         return time;
     }
 
-    public String getLikes() {
-        return likes;
+    public int getId() {
+        return id;
+    }
+
+    public String getGoId() {
+        return goId;
+    }
+
+    public String getGpostTitle() {
+        return gpostTitle;
     }
 }

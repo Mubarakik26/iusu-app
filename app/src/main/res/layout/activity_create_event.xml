@@ -27,6 +27,7 @@
           android:src="@drawable/profile_avatar_placeholder_large" />
 
       <ImageButton
+          android:id="@+id/add_event_image_ib"
           android:layout_width="95dp"
           android:layout_height="74dp"
           android:layout_alignBottom="@id/add_event_image"
@@ -71,10 +72,22 @@
             android:hint="Enter date here"
             android:fontFamily="@font/poppins_medium"
             android:layout_marginTop="20dp"
+          android:inputType="none"
+            android:focusable="false"
             />
 
       </com.google.android.material.textfield.TextInputLayout>
 
+      <ImageButton
+          android:id="@+id/pick_date_ib"
+          android:layout_width="48dp"
+          android:layout_height="48dp"
+        android:src="@drawable/ic_baseline_date_24"
+       android:foregroundGravity="center"
+        android:backgroundTint="#00FFFFFF"
+        android:layout_alignBottom="@id/event_date_layout_tv"
+        android:layout_alignRight="@id/event_date_layout_tv"
+        android:layout_marginRight="20dp"/>
 
       <com.google.android.material.textfield.TextInputLayout
           android:layout_width="match_parent"
@@ -89,9 +102,22 @@
             android:hint="Enter time here"
             android:fontFamily="@font/poppins_medium"
             android:layout_marginTop="20dp"
+            android:inputType="none"
+            android:focusable="false"
             />
 
       </com.google.android.material.textfield.TextInputLayout>
+
+      <ImageButton
+          android:id="@+id/pick_time_ib"
+          android:layout_width="48dp"
+          android:layout_height="48dp"
+          android:src="@drawable/ic_time"
+          android:foregroundGravity="center"
+          android:backgroundTint="#00FFFFFF"
+          android:layout_alignBottom="@id/event_time_layout_tv"
+          android:layout_alignRight="@id/event_time_layout_tv"
+          android:layout_marginRight="20dp"/>
 
 
       <com.google.android.material.textfield.TextInputLayout

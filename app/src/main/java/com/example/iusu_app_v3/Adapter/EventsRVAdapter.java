@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.example.iusu_app_v3.Activity.EventsDetailsActivity;
 import com.example.iusu_app_v3.Models.Events;
 import com.example.iusu_app_v3.R;
@@ -22,10 +24,12 @@ public class EventsRVAdapter extends RecyclerView.Adapter<EventsRVAdapter.ViewHo
 
     ArrayList<Events> eventsArrayList;
     Context context;
+    RequestOptions option;
 
     public EventsRVAdapter(ArrayList<Events> eventsArrayList, Context context) {
         this.eventsArrayList = eventsArrayList;
         this.context = context;
+        option= new RequestOptions().centerCrop().placeholder(R.drawable.profile_avatar_placeholder_large).error(R.drawable.profile_avatar_placeholder_large);
     }
 
     @NonNull
@@ -39,11 +43,13 @@ public class EventsRVAdapter extends RecyclerView.Adapter<EventsRVAdapter.ViewHo
     public void onBindViewHolder(@NonNull EventsRVAdapter.ViewHolder holder, int position) {
 
         Events events = eventsArrayList.get(position);
-        holder.eventImage.setImageResource(events.getImage());
+        //holder.eventImage.setImageResource(events.getImage());
         holder.eventTitleTV.setText(events.getTitle());
         holder.eventDateTV.setText(events.getDate());
         holder.eventTimeTV.setText(events.getTime());
-        holder.eventLikesTV.setText(events.getLikes());
+       // holder.eventLikesTV.setText(events.getLikes());
+
+        Glide.with(context).load(events.getImage()).apply(option).into(holder.eventImage);
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -55,7 +61,7 @@ public class EventsRVAdapter extends RecyclerView.Adapter<EventsRVAdapter.ViewHo
                 intent.putExtra("description",events.getDescription());
                 intent.putExtra("date",events.getDate());
                 intent.putExtra("time",events.getTime());
-                intent.putExtra("likes",events.getLikes());
+                //intent.putExtra("likes",events.getLikes());
 
                 context.startActivity(intent);
             }

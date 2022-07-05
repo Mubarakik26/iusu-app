@@ -49,7 +49,7 @@ public class NewsActivity extends AppCompatActivity {
 
 
         newsArrayList= new ArrayList<>();
-//
+
         newRecyclerView=findViewById(R.id.rv_news);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(NewsActivity.this,RecyclerView.VERTICAL,false);

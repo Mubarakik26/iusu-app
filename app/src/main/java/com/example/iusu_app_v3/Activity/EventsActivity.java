@@ -10,10 +10,23 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.Volley;
 import com.example.iusu_app_v3.Adapter.EventsRVAdapter;
+
 import com.example.iusu_app_v3.Models.Events;
+import com.example.iusu_app_v3.Models.News;
 import com.example.iusu_app_v3.R;
+import com.example.iusu_app_v3.URLs;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
@@ -22,7 +35,8 @@ public class EventsActivity extends AppCompatActivity {
     ArrayList<Events> eventsArrayList;
     RecyclerView eventsRecyclerView;
     EventsRVAdapter eventsRVAdapter;
-
+    JsonArrayRequest jsonArrayRequest;
+    RequestQueue requestQueue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +47,14 @@ public class EventsActivity extends AppCompatActivity {
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-        eventsArrayList=new ArrayList<>();
-        eventsArrayList.add(new Events(R.drawable.im_1,"Speak Health: Girl talk","Come listen to specialist as the give advice on girl related issues.","24 November,2022","14:00","60 likes"));
-        eventsArrayList.add(new Events(R.drawable.im_2,"Computer Clinic","Have issues with your computer, do you want to update windows, or there is software that you want, come we will be there for you.","25 December,2022","18:00","80 likes"));
-        eventsArrayList.add(new Events(R.drawable.im_3,"Legal Aid Clinic","Come listen to specialist as the give advice on girl related issues.","24 November,2022","14:00","60 likes"));
-        eventsArrayList.add(new Events(R.drawable.im_5,"Blood donation","Come listen to specialist as the give advice on girl related issues.","24 November,2022","14:00","60 likes"));
 
-        eventsRVAdapter= new EventsRVAdapter(eventsArrayList,EventsActivity.this);
+        eventsArrayList=new ArrayList<>();
+
         eventsRecyclerView= findViewById(R.id.rv_events);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(EventsActivity.this,RecyclerView.VERTICAL,false);
         eventsRecyclerView.setLayoutManager(linearLayoutManager);
-        eventsRecyclerView.setAdapter(eventsRVAdapter);
+        eventsJsonRequest();
 
         findViewById(R.id.events_fab_btn).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -63,5 +73,45 @@ public class EventsActivity extends AppCompatActivity {
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+
+    public void eventsJsonRequest() {
+
+        jsonArrayRequest = new JsonArrayRequest(URLs.URL_GET_EVENT, new Response.Listener<JSONArray>() {
+
+            @Override
+            public void onResponse(JSONArray response) {
+
+                JSONObject jsonObject = null;
+                for (int i = 0; i<response.length();i++){
+
+                    try{
+
+                        jsonObject=response.getJSONObject(i);
+                        Events events = new Events(jsonObject.getInt("id"),jsonObject.getString("image"),jsonObject.getString("title"),jsonObject.getString("description"),jsonObject.getString("date"),jsonObject.getString("time"),jsonObject.getString("go_id"),jsonObject.getString("gptitle"));
+                        eventsArrayList.add(events);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+
+                eventsRVAdapter= new EventsRVAdapter(eventsArrayList,EventsActivity.this);
+                eventsRecyclerView.setAdapter(eventsRVAdapter);
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        requestQueue = Volley.newRequestQueue(EventsActivity.this);
+        requestQueue.add(jsonArrayRequest);
+
+
     }
 }

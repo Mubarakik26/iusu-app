@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.iusu_app_v3.R;
 
 public class EventsDetailsActivity extends AppCompatActivity {
@@ -38,11 +39,12 @@ public class EventsDetailsActivity extends AppCompatActivity {
         beThereBtn=findViewById(R.id.btn_event_details_willBeThere);
 
 
-        eventDetailsImageIV.setImageResource(getIntent().getIntExtra("image",0));
+       // eventDetailsImageIV.setImageResource(getIntent().getIntExtra("image",0));
         eventDetailsTitleTV.setText(getIntent().getStringExtra("title"));
         eventDetailsDescriptionTV.setText(getIntent().getStringExtra("description"));
         eventDetailsDateTV.setText(getIntent().getStringExtra("date"));
         eventDetailsTimeTV.setText(getIntent().getStringExtra("time"));
+        Glide.with(this).load(getIntent().getStringExtra("image")).into(eventDetailsImageIV);
 
         beThereBtn.setOnClickListener(new View.OnClickListener() {
             @Override

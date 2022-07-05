@@ -132,7 +132,7 @@ public class ProfileActivity extends AppCompatActivity {
 
                             @Override
                             public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-                               permissionToken.continuePermissionRequest();
+                                permissionToken.continuePermissionRequest();
                             }
                         }).check();
 
