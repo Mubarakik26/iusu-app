@@ -46,169 +46,169 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CreateNewsActivity extends AppCompatActivity {
-    ImageView newsImage;
-    TextInputLayout titleTIL,descriptionTIL;
-    Button submitPostBtn;
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_create_news);
+  ImageView newsImage;
+  TextInputLayout titleTIL,descriptionTIL;
+  Button submitPostBtn;
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_create_news);
 
-        ActionBar actionBar = getSupportActionBar();
-        // showing the back button in action bar
-        actionBar.setDisplayHomeAsUpEnabled(true);
+    ActionBar actionBar = getSupportActionBar();
+    // showing the back button in action bar
+    actionBar.setDisplayHomeAsUpEnabled(true);
 
-        newsImage=findViewById(R.id.news_image);
-        titleTIL=findViewById(R.id.title_layout_tv);
-        descriptionTIL=findViewById(R.id.description_layout_tv);
-        submitPostBtn=findViewById(R.id.create_post);
-
-
-        findViewById(R.id.add_news_image).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                chooseImage();
-            }
-        });
+    newsImage=findViewById(R.id.news_image);
+    titleTIL=findViewById(R.id.title_layout_tv);
+    descriptionTIL=findViewById(R.id.description_layout_tv);
+    submitPostBtn=findViewById(R.id.create_post);
 
 
-        submitPostBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadPost();
-            }
-        });
+    findViewById(R.id.add_news_image).setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        chooseImage();
+      }
+    });
 
+
+    submitPostBtn.setOnClickListener(new View.OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        uploadPost();
+      }
+    });
+
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    switch (item.getItemId()) {
+      case android.R.id.home:
+        this.finish();
+        return true;
     }
+    return super.onOptionsItemSelected(item);
+  }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case android.R.id.home:
-                this.finish();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
+  public void chooseImage(){
+    Dexter.withActivity(CreateNewsActivity.this)
+            .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
+            .withListener(new PermissionListener() {
+              @Override
+              public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
+                CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).setFixAspectRatio(true)
+                        .setAspectRatio(2, 1).setAllowRotation(true)
+                        .setMultiTouchEnabled(true)
+                        .start(CreateNewsActivity.this);
+
+
+              }
+
+              @Override
+              public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
+                if(permissionDeniedResponse.isPermanentlyDenied()){
+                  AlertDialog.Builder builder=new AlertDialog.Builder(CreateNewsActivity.this);
+                  builder.setTitle("Permission Required").setMessage("Permission to access storage is required to pick image. Please go to setting to enable permission to access storage")
+                          .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                              Intent intent = new Intent();
+                              intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                              intent.setData(Uri.fromParts("package",getPackageName(),null));
+                              startActivityForResult(intent,51);
+                            }
+                          }).setNegativeButton("Cancel",null).show();
+                }
+              }
+
+              @Override
+              public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                permissionToken.continuePermissionRequest();
+              }
+            }).check();
+
+  }
+
+  @Override
+  public void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+
+    if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
+      CropImage.ActivityResult result = CropImage.getActivityResult(data);
+      if (resultCode == RESULT_OK) {
+        Uri resultUri = result.getUri();
+        newsImage.setImageURI(resultUri);
+
+      } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
+        Exception error = result.getError();
+      }
     }
+  }
 
-    public void chooseImage(){
-        Dexter.withActivity(CreateNewsActivity.this)
-                .withPermission(Manifest.permission.READ_EXTERNAL_STORAGE)
-                .withListener(new PermissionListener() {
-                    @Override
-                    public void onPermissionGranted(PermissionGrantedResponse permissionGrantedResponse) {
-                        CropImage.activity().setGuidelines(CropImageView.Guidelines.ON).setFixAspectRatio(true)
-                                .setAspectRatio(2, 1).setAllowRotation(true)
-                                .setMultiTouchEnabled(true)
-                                .start(CreateNewsActivity.this);
+  private void uploadPost() {
 
+    //getting the tag from the edittext
+    final String titleString = titleTIL.getEditText().getText().toString();
+    final String descriptionString = descriptionTIL.getEditText().getText().toString();
+    final String goId = SharedPreferenceManager.getInstance(this).getStudent().getGo_id();
 
-                    }
-
-                    @Override
-                    public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-                        if(permissionDeniedResponse.isPermanentlyDenied()){
-                            AlertDialog.Builder builder=new AlertDialog.Builder(CreateNewsActivity.this);
-                            builder.setTitle("Permission Required").setMessage("Permission to access storage is required to pick image. Please go to setting to enable permission to access storage")
-                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface dialog, int which) {
-                                            Intent intent = new Intent();
-                                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                            intent.setData(Uri.fromParts("package",getPackageName(),null));
-                                            startActivityForResult(intent,51);
-                                        }
-                                    }).setNegativeButton("Cancel",null).show();
-                        }
-                    }
-
-                    @Override
-                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-                        permissionToken.continuePermissionRequest();
-                    }
-                }).check();
-
-    }
-
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
+    //our custom volley request
+    VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, URLs.URL_NEWS_UPLOAD,
+            new Response.Listener<NetworkResponse>() {
+              @Override
+              public void onResponse(NetworkResponse response) {
 
 
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
-            CropImage.ActivityResult result = CropImage.getActivityResult(data);
-            if (resultCode == RESULT_OK) {
-                Uri resultUri = result.getUri();
-                newsImage.setImageURI(resultUri);
-
-            } else if (resultCode == CropImage.CROP_IMAGE_ACTIVITY_RESULT_ERROR_CODE) {
-                Exception error = result.getError();
-            }
-        }
-    }
-
-    private void uploadPost() {
-
-        //getting the tag from the edittext
-        final String titleString = titleTIL.getEditText().getText().toString();
-        final String descriptionString = descriptionTIL.getEditText().getText().toString();
-        final String goId = SharedPreferenceManager.getInstance(this).getStudent().getGo_id();
-
-        //our custom volley request
-        VolleyMultipartRequest volleyMultipartRequest = new VolleyMultipartRequest(Request.Method.POST, URLs.URL_NEWS_UPLOAD,
-                new Response.Listener<NetworkResponse>() {
-                    @Override
-                    public void onResponse(NetworkResponse response) {
-
-
-                        try {
-                            Log.i("tagconvertstr", "["+new String(response.data)+"]");
-                            JSONObject obj = new JSONObject(new String(response.data));
-                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                try {
+                  Log.i("tagconvertstr", "["+new String(response.data)+"]");
+                  JSONObject obj = new JSONObject(new String(response.data));
+                  Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
 
 
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                },
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-                }) {
+                } catch (JSONException e) {
+                  e.printStackTrace();
+                }
+              }
+            },
+            new Response.ErrorListener() {
+              @Override
+              public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+              }
+            }) {
 
-            /*
-             * If you want to add more parameters with the image
-             * you can do it here
-             * here we have only one parameter with the image
-             * which is tags
-             * */
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> params = new HashMap<>();
-                params.put("title", titleString);
-                params.put("description", descriptionString);
-                params.put("go_id",String.valueOf(goId));
-                return params;
-            }
+      /*
+       * If you want to add more parameters with the image
+       * you can do it here
+       * here we have only one parameter with the image
+       * which is tags
+       * */
+      @Override
+      protected Map<String, String> getParams() throws AuthFailureError {
+        Map<String, String> params = new HashMap<>();
+        params.put("title", titleString);
+        params.put("description", descriptionString);
+        params.put("go_id",String.valueOf(goId));
+        return params;
+      }
 
 
-            /*
-             * Here we are passing image by renaming it with a unique name
-             * */
-            @Override
-            protected Map<String, DataPart> getByteData() {
-                Map<String, DataPart> params = new HashMap<>();
-                long imagename = System.currentTimeMillis();
-                params.put("pic", new DataPart(imagename + ".png", AppHelper.getFileDataFromDrawable(getApplicationContext(), newsImage.getDrawable()), "image/jpg"));
-                return params;
-            }
-        };
+      /*
+       * Here we are passing image by renaming it with a unique name
+       * */
+      @Override
+      protected Map<String, DataPart> getByteData() {
+        Map<String, DataPart> params = new HashMap<>();
+        long imagename = System.currentTimeMillis();
+        params.put("pic", new DataPart(imagename + ".png", AppHelper.getFileDataFromDrawable(getApplicationContext(), newsImage.getDrawable()), "image/jpg"));
+        return params;
+      }
+    };
 
-        //adding the request to volley
-        Volley.newRequestQueue(this).add(volleyMultipartRequest);
-    }
+    //adding the request to volley
+    Volley.newRequestQueue(this).add(volleyMultipartRequest);
+  }
 }

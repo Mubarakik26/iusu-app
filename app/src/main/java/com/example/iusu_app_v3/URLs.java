@@ -15,13 +15,18 @@ public class URLs {
   public static final String URL_REGISTER = ROOT_URL_000WEBHOSTAPP + "signup";
   public static final String URL_LOGIN= ROOT_URL_000WEBHOSTAPP + "login";
   public static final String URL_UPLOAD_PROFILE_PIC=ROOT_URL_000WEBHOSTAPP_PROFILE_PIC_UPLOAD+"uploadpic";
+
   public static final String URL_NEWS_UPLOAD=ROOT_URL_000WEBHOSTAPP_NEWS_UPLOAD+"make_post";
   public static final String URL_NEWS_FETCH=ROOT_URL_000WEBHOSTAPP_NEWS_UPLOAD+"getnews";
+  public static final String URL_LATEST_NEWS_FETCH=ROOT_URL_000WEBHOSTAPP_NEWS_UPLOAD+"latest_news";
+
   public static final String URL_ANN_UPLOAD=ROOT_URL_000WEBHOSTAPP_ANNOUNCEMENT_UPLOAD+"make_announcement";
   public static final String URL_ANN_GET_ANN=ROOT_URL_000WEBHOSTAPP_ANNOUNCEMENT_UPLOAD+"getannouncements";
+  public static final String URL_LATEST_ANNOUNCEMENTS=ROOT_URL_000WEBHOSTAPP_ANNOUNCEMENT_UPLOAD+"latest_announcements";
 
  public static final String URL_EVENT_UPLOAD=ROOT_URL_000WEBHOSTAPP_EVENT_UPLOAD+"make_post";
   public static final String URL_GET_EVENT=ROOT_URL_000WEBHOSTAPP_EVENT_UPLOAD+"getevents";
+  public static final String URL_LATEST_EVENT=ROOT_URL_000WEBHOSTAPP_EVENT_UPLOAD+"latest_events";
 
 
   //guild official

@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Iusu_app_v3">
         <activity
+            android:name=".Activity.GoDetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".Activity.GuildOfficialActivity"
             android:exported="false" />
         <activity
@@ -74,7 +77,6 @@
             android:label="Register" />
         <activity
             android:name=".Activity.MainActivity"
-
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

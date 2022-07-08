@@ -257,6 +257,8 @@ public class CreateEventActivity extends AppCompatActivity {
 
     //adding the request to volley
     Volley.newRequestQueue(this).add(volleyMultipartRequest);
+    Intent intent = new Intent(CreateEventActivity.this,EventsActivity.class);
+    startActivity(intent);
   }
 
 

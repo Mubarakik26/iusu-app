@@ -23,6 +23,7 @@ import com.example.iusu_app_v3.Models.Announcement;
 import com.example.iusu_app_v3.Adapter.AnnouncementRVAdapter;
 import com.example.iusu_app_v3.Models.News;
 import com.example.iusu_app_v3.R;
+import com.example.iusu_app_v3.SharedPreferenceManager;
 import com.example.iusu_app_v3.URLs;
 
 import org.json.JSONArray;
@@ -39,6 +40,8 @@ public class AnnouncementActivity extends AppCompatActivity {
     JsonArrayRequest jsonArrayRequest;
     RequestQueue requestQueue;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,8 +50,14 @@ public class AnnouncementActivity extends AppCompatActivity {
         // showing the back button in action bar
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-
-
+Log.e("tag2",SharedPreferenceManager.getInstance(this).getStudent().getGo_id());
+        if(SharedPreferenceManager.getInstance(this).getStudent().getGuildTitle()==null || SharedPreferenceManager.getInstance(this).getStudent().getGuildTitle().length()==0){
+            Log.e("tag2","YOU ARE RIGHT"+SharedPreferenceManager.getInstance(this).getStudent().getGuildTitle());
+             findViewById(R.id.ann_fab_btn).setVisibility(View.INVISIBLE);
+        }else {
+            Log.e("tag2","YOU ARE WRONG"+SharedPreferenceManager.getInstance(this).getStudent().getGuildTitle());
+            findViewById(R.id.ann_fab_btn).setVisibility(View.VISIBLE);
+        }
 
         announcementArrayList= new ArrayList<>();
 

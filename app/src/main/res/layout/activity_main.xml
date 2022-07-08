@@ -6,72 +6,143 @@
     android:layout_height="match_parent"
     tools:context=".Activity.MainActivity">
 
-        <LinearLayout
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/bottom_navigation"
+        android:layout_marginBottom="20dp">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:orientation="vertical"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0">
+            android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/hi_firstNameTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hi, First Name"
+                    android:fontFamily="@font/poppins_medium"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="18dp"
+                    android:textSize="16sp"/>
+
+                <TextView
+                    android:id="@+id/homeTitleTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Home"
+                    android:fontFamily="@font/poppins_semibold"
+                    android:textSize="20sp"
+                    android:layout_below="@id/hi_firstNameTV"
+                    android:layout_alignLeft="@id/hi_firstNameTV"
+                    android:layout_marginTop="20sp"/>
+
+                <TextView
+                    android:id="@+id/latestAnnouncemetsTitleTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Latest announcements"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="16sp"
+                    android:layout_below="@id/homeTitleTV"
+                    android:layout_alignLeft="@id/hi_firstNameTV"
+                    android:layout_marginTop="20sp"/>
 
 
-            <Button
-                android:id="@+id/btnAnnouncements"
-                android:layout_width="210dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
+            <TextView
+                android:id="@+id/seemoreAnnouncemetsTV"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/homeTitleTV"
+                android:layout_alignBottom="@id/latestAnnouncemetsTitleTV"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="20sp"
+                android:layout_marginRight="18dp"
+                android:fontFamily="@font/poppins_light"
+                android:text="See more"
+                android:textSize="14sp" />
 
-                android:text="Announcements"
-                android:layout_gravity="center_horizontal"/>
-
-
-
-            <Button
-                android:id="@+id/btnEvents"
-                android:layout_width="210dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
-                android:text="Events" />
-
-
-
-            <Button
-                android:id="@+id/btnNews"
-                android:layout_width="210dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
-                android:text="News" />
-
-
-
-            <Button
-                android:id="@+id/btnGuild"
-                android:layout_width="210dp"
-                android:layout_height="50dp"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
-                android:text="GUILD" />
-
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/latestAnnouncementsRV"
+                   android:layout_width="match_parent"
+                   android:layout_height="160dp"
+                   android:layout_marginTop="10dp"
+                   android:layout_below="@id/latestAnnouncemetsTitleTV"/>
 
 
 
+                <TextView
+                    android:id="@+id/latestNewsTitleTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Latest news"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="16sp"
+                    android:layout_below="@id/latestAnnouncementsRV"
+                    android:layout_alignLeft="@id/hi_firstNameTV"
+                    android:layout_marginTop="20sp"/>
+
+
+                <TextView
+                    android:id="@+id/seemoreNewsTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="See more"
+                    android:fontFamily="@font/poppins_light"
+                    android:textSize="14sp"
+                    android:layout_below="@id/latestAnnouncementsRV"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20sp"
+                    android:layout_alignBottom="@id/latestNewsTitleTV"
+                    android:layout_marginRight="18dp"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/latestNewsRV"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_below="@id/latestNewsTitleTV"
+                android:layout_marginTop="10dp" />
+
+
+
+                <TextView
+                    android:id="@+id/latestEventsTitleTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Latest events"
+                    android:fontFamily="@font/poppins_medium"
+                    android:textSize="16sp"
+                    android:layout_below="@id/latestNewsRV"
+                    android:layout_alignLeft="@id/hi_firstNameTV"
+                    android:layout_marginTop="20sp"/>
+
+
+                <TextView
+                    android:id="@+id/seemoreEventsTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="See more"
+                    android:fontFamily="@font/poppins_light"
+                    android:textSize="14sp"
+                    android:layout_below="@id/latestNewsRV"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="20sp"
+                    android:layout_alignBottom="@id/latestEventsTitleTV"
+                    android:layout_marginRight="18dp"/>
+
+               <androidx.recyclerview.widget.RecyclerView
+                   android:id="@+id/latestEventsRV"
+                   android:layout_width="match_parent"
+                   android:layout_height="160dp"
+                   android:layout_marginTop="10dp"
+                   android:layout_below="@id/latestEventsTitleTV"/>
 
 
 
 
-        </LinearLayout>
+        </RelativeLayout>
+
+
+    </ScrollView>
 
  <com.google.android.material.bottomnavigation.BottomNavigationView
      android:id="@+id/bottom_navigation"
@@ -83,3 +154,70 @@
 
 
 </RelativeLayout>
+
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginBottom="8dp"-->
+    <!--            android:layout_marginEnd="8dp"-->
+    <!--            android:layout_marginStart="8dp"-->
+    <!--            android:layout_marginTop="8dp"-->
+    <!--            android:gravity="center"-->
+    <!--            android:orientation="vertical"-->
+    <!--            android:layout_centerHorizontal="true"-->
+    <!--            android:layout_centerVertical="true"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintHorizontal_bias="0.0"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent"-->
+    <!--            app:layout_constraintVertical_bias="0.0">-->
+
+
+    <!--            <Button-->
+    <!--                android:id="@+id/btnAnnouncements"-->
+    <!--                android:layout_width="210dp"-->
+    <!--                android:layout_height="50dp"-->
+    <!--                android:layout_marginTop="10dp"-->
+
+    <!--                android:text="Announcements"-->
+    <!--                android:layout_gravity="center_horizontal"/>-->
+
+
+
+    <!--            <Button-->
+    <!--                android:id="@+id/btnEvents"-->
+    <!--                android:layout_width="210dp"-->
+    <!--                android:layout_height="50dp"-->
+    <!--                android:layout_marginTop="10dp"-->
+    <!--                android:layout_gravity="center_horizontal"-->
+    <!--                android:text="Events" />-->
+
+
+
+    <!--            <Button-->
+    <!--                android:id="@+id/btnNews"-->
+    <!--                android:layout_width="210dp"-->
+    <!--                android:layout_height="50dp"-->
+    <!--                android:layout_marginTop="10dp"-->
+    <!--                android:layout_gravity="center_horizontal"-->
+    <!--                android:text="News" />-->
+
+
+
+    <!--            <Button-->
+    <!--                android:id="@+id/btnGuild"-->
+    <!--                android:layout_width="210dp"-->
+    <!--                android:layout_height="50dp"-->
+    <!--                android:layout_marginTop="10dp"-->
+    <!--                android:layout_gravity="center_horizontal"-->
+    <!--                android:text="GUILD" />-->
+
+
+
+
+
+
+
+
+    <!--        </LinearLayout>-->

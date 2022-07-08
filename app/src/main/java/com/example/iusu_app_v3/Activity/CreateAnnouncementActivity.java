@@ -129,6 +129,8 @@ public class CreateAnnouncementActivity extends AppCompatActivity {
 
         //adding the request to volley
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+        Intent intent = new Intent(CreateAnnouncementActivity.this,AnnouncementActivity.class);
+        startActivity(intent);
     }
 
 }

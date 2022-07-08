@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/profile_avatar_placeholder_large"
+        android:id="@+id/go_profile_image_iv"
+        android:layout_centerHorizontal="true"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guild officials"
+        android:id="@+id/guildTitle_tv"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_below="@id/go_profile_image_iv"
+        android:layout_marginTop="5dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"/>
+
+     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Main"
+        android:id="@+id/guildCampus_tv"
+        android:textSize="16sp"
+        android:layout_below="@id/guildTitle_tv"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"/>
+
+    </RelativeLayout>
+
+
+
+</androidx.cardview.widget.CardView>

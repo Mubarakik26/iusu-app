@@ -18,6 +18,7 @@ public class AnnouncementRVAdapter extends RecyclerView.Adapter<AnnouncementRVAd
     private ArrayList<Announcement> announcementArrayList;
     private Context context;
 
+
     public AnnouncementRVAdapter(ArrayList<Announcement> announcementArrayList, Context context) {
         this.announcementArrayList = announcementArrayList;
         this.context = context;

@@ -6,8 +6,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
@@ -55,6 +57,13 @@ public class NewsActivity extends AppCompatActivity {
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(NewsActivity.this,RecyclerView.VERTICAL,false);
         newRecyclerView.setLayoutManager(linearLayoutManager);
         newsJsonRequest();
+
+        findViewById(R.id.news_fab_btn).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(),CreateNewsActivity.class));
+            }
+        });
 
     }
 
